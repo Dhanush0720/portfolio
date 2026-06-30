@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+:root {
+  --color-ink: #000000;
+  --color-surface: #0a0a0a;
+  --color-surface-light: #f9f9f9;
+  --color-accent: #ff2a2a;
+  --color-text-dark: #ffffff;
+  --color-text-light: #111827;
+  --color-text-dim-dark: #9ca3af;
+  --color-text-dim-light: #4b5563;
+  --color-border-dark: #1f2937;
+  --color-border-light: #e5e7eb;
+
+  --font-display: "Space Grotesk", "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+  --font-body: "Inter", "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Theme classes applied to sections */
+.theme-dark {
+  background-color: var(--color-ink);
+  color: var(--color-text-dark);
+}
+
+.theme-light {
+  background-color: #ffffff;
+  color: var(--color-text-light);
+}
+
+/* Scrollbar Hide Utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Flip Card 3D Animation styles */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.flip-card-inner {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Dynamic theme transition rules */
+.theme-transition {
+  transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+              color 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+              border-color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Fade in up helper */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Custom selection */
+::selection {
+  background: var(--color-accent);
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
