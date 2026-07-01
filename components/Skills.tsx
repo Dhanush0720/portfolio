@@ -3,7 +3,7 @@
 const skillCategories = [
   {
     title: "Frontend Development",
-    skills: ["React", "JavaScript", "TypeScript", "HTML5", "CSS3", "Tailwind CSS", "Bootstrap", "Next.js"],
+    skills: ["React", "JavaScript", "TypeScript", "HTML5", "CSS3", "Bootstrap"],
   },
   {
     title: "Backend Development",
@@ -11,11 +11,11 @@ const skillCategories = [
   },
   {
     title: "AI & Machine Learning",
-    skills: ["Machine Learning", "scikit-learn", "Generative AI", "LLMs", "pandas", "NumPy", "Prompt Engineering", "TensorFlow"],
+    skills: ["Machine Learning", "pandas", "NumPy", "Prompt Engineering", "TensorFlow"],
   },
   {
     title: "Tools & Cloud",
-    skills: ["Git", "GitHub", "Docker", "Postman", "Linux", "CI/CD", "VS Code", "Figma"],
+    skills: ["Git", "GitHub", "CI/CD", "VS Code"],
   },
 ];
 
