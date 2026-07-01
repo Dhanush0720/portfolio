@@ -1,51 +1,29 @@
 "use client";
 
-interface Project {
-  title: string;
-  category: string;
-  desc: string;
-  tech: string[];
-  link: string;
-  date: string;
-}
-
-const featuredProjects: Project[] = [
+const projects = [
   {
-    title: "Expense Tracker & EMI Calculator",
-    category: "Full-Stack Web App • Finance",
-    desc: "An AI-powered web application to track, manage, and categorize user finances across 10 distinct categories. Integrates interactive graphs and a dynamic EMI planner to support personal financial analysis.",
-    tech: ["Python", "HTML5", "CSS3", "JavaScript", "GitHub"],
-    link: "https://github.com/dhanush0720",
-    date: "Mar 2025",
+    cat: "AI • NLP • LLM",
+    title: "AI-Powered Finance Tracker",
+    desc: "A full-stack personal finance app with AI-powered insights, expense categorization, and predictive budgeting built with React, Node.js, and ML models.",
+    tech: ["React", "Node.js", "Python", "MongoDB"],
+    link: "https://github.com/Dhanush0720",
+    featured: false,
   },
   {
-    title: "Predictive Analytics Model Evaluator",
-    category: "Data Science • Machine Learning",
-    desc: "A comparative evaluation framework testing multiple ML classifiers (Decision Trees, Logistic Regression) on real-world datasets. Automatically scales features, handles nulls, and plots comparative precision curves.",
-    tech: ["Python", "scikit-learn", "pandas", "NumPy", "Jupyter"],
-    link: "https://github.com/dhanush0720",
-    date: "Dec 2025",
-  },
-];
-
-const secondaryProjects = [
-  {
-    title: "Relational SQL Inventory System",
-    desc: "Database layer and query pipeline to organize inventory items, manage transactions, and query logs across multiple branches.",
-    tech: ["SQL", "Python", "Database Design"],
-    link: "https://github.com/dhanush0720",
+    cat: "Performance • Finance",
+    title: "College Inventory System",
+    desc: "High-performance inventory management platform with real-time stock tracking, mess menu management, and role-based access control for institutions.",
+    tech: ["React", "Node.js", "MySQL", "JWT Auth"],
+    link: "https://github.com/Dhanush0720",
+    featured: true,
   },
   {
-    title: "Algorithmic Decision Classifier",
-    desc: "Custom scratch implementation of Decision Tree boundaries to test information gain and entropy splits against scikit-learn standard libraries.",
-    tech: ["Python", "NumPy", "Algorithms"],
-    link: "https://github.com/dhanush0720",
-  },
-  {
-    title: "Terminal Developer Portfolio v1",
-    desc: "An interactive, terminal-inspired responsive developer portfolio interface built using Next.js, customized CSS grid units, and responsive hydration components.",
-    tech: ["Next.js", "React", "CSS Grid"],
-    link: "https://github.com/dhanush0720",
+    cat: "SaaS • Security • ML",
+    title: "Predictive ML Pipeline",
+    desc: "End-to-end machine learning pipeline for classification tasks using scikit-learn, pandas, and NumPy — with feature engineering and model evaluation.",
+    tech: ["Python", "scikit-learn", "pandas", "NumPy"],
+    link: "https://github.com/Dhanush0720",
+    featured: false,
   },
 ];
 
@@ -54,120 +32,98 @@ export default function Projects() {
     <section
       id="projects"
       data-theme="light"
-      className="py-24 px-6 md:px-12 bg-white text-gray-900 theme-transition border-b border-gray-100"
+      className="bg-[#f5f5f5] text-gray-900 theme-transition"
+      style={{
+        backgroundImage: `
+          linear-gradient(to right, #80808010 1px, transparent 1px),
+          linear-gradient(to bottom, #80808010 1px, transparent 1px)
+        `,
+        backgroundSize: "40px 40px",
+      }}
     >
-      <div className="max-w-7xl mx-auto w-full">
-        {/* Section Heading */}
-        <div className="mb-16">
-          <span className="font-mono text-xs text-[var(--color-accent)] font-semibold uppercase tracking-widest block mb-2">
-            04 . Selected Works
-          </span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight">
-            Featured Projects
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-24">
+        {/* Header */}
+        <div className="mb-12">
+          <h2
+            className="text-4xl md:text-6xl font-black tracking-tight text-gray-900 mb-4 relative inline-block"
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          >
+            Projects That Define
+            <br />
+            My Journey
+            {/* Red underline */}
+            <span className="absolute -bottom-3 left-0 w-64 h-1 bg-[#ff2a2a] rounded-full block" />
           </h2>
+          <p className="text-gray-500 text-base font-medium max-w-lg mt-6" style={{ fontFamily: "Inter, sans-serif" }}>
+            A curated portfolio of production-grade platforms, full-stack
+            microservices, and AI models built for scale and speed.
+          </p>
         </div>
 
-        {/* Featured Projects Grid */}
-        <div className="grid md:grid-cols-2 gap-8 mb-20">
-          {featuredProjects.map((project, idx) => (
+        {/* 3-column project card grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+          {projects.map((proj) => (
             <div
-              key={idx}
-              className="group flex flex-col border border-gray-100 bg-gray-50/50 hover:bg-gray-50 hover:border-gray-200 rounded-2xl p-8 transition-all duration-300 shadow-sm"
+              key={proj.title}
+              className={`relative bg-white rounded-[2rem] p-6 flex flex-col gap-4 shadow-sm transition-all duration-300 hover:shadow-lg ${
+                proj.featured
+                  ? "border-2 border-[#ff2a2a] shadow-[0_8px_32px_rgba(255,42,42,0.1)]"
+                  : "border border-gray-200"
+              }`}
             >
-              {/* Category & Date */}
-              <div className="flex items-center justify-between mb-4 text-xs font-mono text-gray-400 font-semibold">
-                <span>{project.category}</span>
-                <span>{project.date}</span>
-              </div>
+              {/* Pin dot at top */}
+              <div className="absolute top-4 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-gray-300 border border-gray-200 shadow-inner" />
 
-              {/* Title & Description */}
-              <h3 className="font-display text-2xl font-bold text-gray-900 mb-4 group-hover:text-[var(--color-accent)] transition-colors duration-300">
-                {project.title}
-              </h3>
-              <p className="font-body text-gray-600 text-sm leading-relaxed mb-8 flex-grow">
-                {project.desc}
-              </p>
-
-              {/* Tags and Source Link */}
-              <div className="flex flex-col gap-6 mt-auto">
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.map((t) => (
-                    <span
-                      key={t}
-                      className="font-mono text-[10px] bg-white border border-gray-200 rounded px-2.5 py-1 text-gray-600 font-medium"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 font-mono text-xs font-semibold text-gray-800 hover:text-[var(--color-accent)] group-hover:translate-x-1 transition-all duration-300 w-fit"
+              <div className="mt-4">
+                <span
+                  className={`text-[10px] font-extrabold uppercase tracking-widest mb-2 block ${
+                    proj.featured ? "text-[#ff2a2a]" : "text-[#ff2a2a]/80"
+                  }`}
+                  style={{ fontFamily: "Inter, sans-serif" }}
                 >
-                  Source Code
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
-                </a>
+                  {proj.cat}
+                </span>
+                <h3
+                  className={`text-lg font-black mb-3 leading-tight ${
+                    proj.featured ? "text-[#ff2a2a]" : "text-gray-900"
+                  }`}
+                  style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                >
+                  {proj.title}
+                </h3>
+                <p className="text-gray-500 text-sm leading-relaxed" style={{ fontFamily: "Inter, sans-serif" }}>
+                  {proj.desc}
+                </p>
               </div>
+
+              {/* Tech pills */}
+              <div className="flex flex-wrap gap-2 mt-auto">
+                {proj.tech.map((t) => (
+                  <span
+                    key={t}
+                    className="px-3 py-1 rounded-full border border-gray-200 text-xs font-semibold text-gray-600 bg-gray-50"
+                    style={{ fontFamily: "Inter, sans-serif" }}
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+              {/* Source Code link */}
+              <a
+                href={proj.link}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-1.5 text-sm font-bold text-gray-900 hover:text-[#ff2a2a] transition-colors duration-200 mt-2"
+                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+              >
+                Source Code
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
             </div>
           ))}
-        </div>
-
-        {/* Secondary: System Logs / Other Repos */}
-        <div className="border-t border-gray-150 pt-16">
-          <h3 className="font-display text-xl font-bold text-gray-900 mb-8">
-            System Logs &amp; Other Repositories
-          </h3>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {secondaryProjects.map((project, idx) => (
-              <div
-                key={idx}
-                className="border border-gray-100 bg-gray-50/20 hover:bg-gray-50 p-6 rounded-xl flex flex-col justify-between hover:border-gray-200 hover:shadow-sm transition-all duration-300"
-              >
-                <div>
-                  <h4 className="font-display text-base font-bold text-gray-900 mb-2">
-                    {project.title}
-                  </h4>
-                  <p className="font-body text-gray-500 text-xs leading-relaxed mb-6">
-                    {project.desc}
-                  </p>
-                </div>
-                <div className="flex items-center justify-between mt-auto">
-                  <div className="flex flex-wrap gap-1.5">
-                    {project.tech.map((t) => (
-                      <span
-                        key={t}
-                        className="font-mono text-[9px] bg-white border border-gray-150 rounded px-2 py-0.5 text-gray-500"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="font-mono text-[10px] font-semibold text-gray-700 hover:text-[var(--color-accent)]"
-                  >
-                    View →
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>

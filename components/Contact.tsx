@@ -21,17 +21,31 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
-    // Simulate API request
-    setTimeout(() => {
-      setStatus("success");
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        message: "",
-        agree: false,
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
+          name: `${formData.firstName} ${formData.lastName}`,
+          email: formData.email,
+          message: formData.message,
+          subject: `New Portfolio Message from ${formData.firstName} ${formData.lastName}`,
+        }),
       });
-    }, 1500);
+
+      const result = await response.json();
+
+      if (result.success) {
+        setStatus("success");
+        setFormData({ firstName: "", lastName: "", email: "", message: "", agree: false });
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -53,7 +67,7 @@ export default function Contact() {
               Let's Build Something
             </h2>
             <p className="font-body text-gray-400 leading-relaxed mb-12 max-w-sm">
-              I am open to software engineering, full-stack, and machine learning internships. 
+              I am open to software engineering, full-stack, and machine learning internships.
               Drop me a line or send a direct email.
             </p>
 
@@ -129,6 +143,24 @@ export default function Contact() {
                 <p className="font-body text-gray-400 text-sm">
                   Thanks for reaching out! I will review your message and reply as soon as possible.
                 </p>
+              </div>
+            ) : status === "error" ? (
+              <div className="text-center py-12">
+                <span className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-500/10 text-red-400 mb-6">
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </span>
+                <h3 className="font-display text-2xl font-bold mb-2">Something Went Wrong</h3>
+                <p className="font-body text-gray-400 text-sm mb-6">
+                  Sorry, your message could not be sent. Please try again or email me directly.
+                </p>
+                <button
+                  onClick={() => setStatus("idle")}
+                  className="font-body text-xs font-bold uppercase tracking-wider border border-white/20 text-white hover:bg-white hover:text-black px-6 py-3 rounded-lg transition-all duration-300 cursor-pointer"
+                >
+                  Try Again
+                </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
