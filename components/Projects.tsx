@@ -2,29 +2,30 @@
 
 const projects = [
   {
-    cat: "AI • NLP • LLM",
-    title: "AI-Powered Finance Tracker",
-    desc: "A full-stack personal finance app with AI-powered insights, expense categorization, and predictive budgeting built with React, Node.js, and ML models.",
+    cat: "Web Application",
+    title: "Devi Hardware and Plywoods",
+    desc: "A full-stack personal finance application that leverages machine learning to automatically categorize expenses and provide predictive budgeting insights.",
     tech: ["React", "Node.js", "Python", "MongoDB"],
-    link: "https://github.com/Dhanush0720",
+    link: "https://devi-hardware-and-plywoods.vercel.app",
     featured: false,
   },
   {
     cat: "Performance • Finance",
     title: "College Inventory System",
     desc: "High-performance inventory management platform with real-time stock tracking, mess menu management, and role-based access control for institutions.",
-    tech: ["React", "Node.js", "MySQL", "JWT Auth"],
-    link: "https://github.com/Dhanush0720",
+    tech: ["React", "Node.js", "MongoDB", "JWT"],
+    link: "https://invertory-system-zeta.vercel.app",
     featured: true,
   },
   {
-    cat: "SaaS • Security • ML",
-    title: "Predictive ML Pipeline",
-    desc: "End-to-end machine learning pipeline for classification tasks using scikit-learn, pandas, and NumPy — with feature engineering and model evaluation.",
-    tech: ["Python", "scikit-learn", "pandas", "NumPy"],
-    link: "https://github.com/Dhanush0720",
+    cat: "new • beginning • html • css",
+    title: "Codenow assignment",
+    desc: "First practical assignment by codenow.",
+    tech: ["html", "css", "js"],
+    link: "https://codenow-assignment-ashen.vercel.app",
     featured: false,
   },
+
 ];
 
 export default function Projects() {
@@ -65,28 +66,25 @@ export default function Projects() {
           {projects.map((proj) => (
             <div
               key={proj.title}
-              className={`relative bg-white rounded-[2rem] p-6 flex flex-col gap-4 shadow-sm transition-all duration-300 hover:shadow-lg ${
-                proj.featured
+              className={`relative bg-white rounded-[2rem] p-6 flex flex-col gap-4 shadow-sm transition-all duration-300 hover:shadow-lg ${proj.featured
                   ? "border-2 border-[#ff2a2a] shadow-[0_8px_32px_rgba(255,42,42,0.1)]"
                   : "border border-gray-200"
-              }`}
+                }`}
             >
               {/* Pin dot at top */}
               <div className="absolute top-4 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-gray-300 border border-gray-200 shadow-inner" />
 
               <div className="mt-4">
                 <span
-                  className={`text-[10px] font-extrabold uppercase tracking-widest mb-2 block ${
-                    proj.featured ? "text-[#ff2a2a]" : "text-[#ff2a2a]/80"
-                  }`}
+                  className={`text-[10px] font-extrabold uppercase tracking-widest mb-2 block ${proj.featured ? "text-[#ff2a2a]" : "text-[#ff2a2a]/80"
+                    }`}
                   style={{ fontFamily: "Inter, sans-serif" }}
                 >
                   {proj.cat}
                 </span>
                 <h3
-                  className={`text-lg font-black mb-3 leading-tight ${
-                    proj.featured ? "text-[#ff2a2a]" : "text-gray-900"
-                  }`}
+                  className={`text-lg font-black mb-3 leading-tight ${proj.featured ? "text-[#ff2a2a]" : "text-gray-900"
+                    }`}
                   style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                 >
                   {proj.title}
@@ -117,7 +115,7 @@ export default function Projects() {
                 className="flex items-center gap-1.5 text-sm font-bold text-gray-900 hover:text-[#ff2a2a] transition-colors duration-200 mt-2"
                 style={{ fontFamily: "'Space Grotesk', sans-serif" }}
               >
-                Source Code
+                View Project
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
