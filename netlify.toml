@@ -1,0 +1,4 @@
+[build.environment]
+  # Web3Forms access keys are public by design and are inlined into the
+  # client bundle via the NEXT_PUBLIC_ prefix, so exclude it from secrets scanning.
+  SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_WEB3FORMS_KEY"
